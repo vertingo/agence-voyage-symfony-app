@@ -1,0 +1,31 @@
+# Agence Voyage SYmfony
+
+
+Pour lancer l'application en local avec un environnement préconfiguré avec xampp
+il suffit de faire:
+
+...
+composer install
+...
+
+Specifer l'url de la base de donnée dans l'environnement de dev en local dans le fichier .env.
+Si xampp il faut lancer également le server Mysql sur le port 3306 et spécifier le mot de passe 
+ou non dans  config/packages/doctrine.yaml selon la configuration utilisateurs dans PhpMyAdmin.
+
+Ensuite une fois la connection établi avec la BD il faut récréer la table dans la bd grâce à 
+doctrine en tapant les commandes suivantes:
+
+...
+php bin/console doctrine:database:create (Création de la bd projectsymfony)
+
+php bin/console doctrine:schema:create (Création des tables)
+...
+
+Pour alimenter la base une fois la db créé dans PhpMyAdmin il faut éxécuter le script projectsymfony.sql 
+présent dans le dossier données-sql une fois connecter à l'interface PhpMyAdmin dans xampp.
+
+Il ne reste plus qu'à lancer le server de dev en local sur le port 8001:
+
+...
+php bin/console server:run (le server de dev devrait se lancer sur le port 8001 à l'adresse suivante localhost:8001)
+...

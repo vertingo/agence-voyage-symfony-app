@@ -1,0 +1,34 @@
+{% extends 'layout.html.twig'%}
+
+{% block body %}
+<div class="container">
+<br>
+
+
+{% for cmps in compagnie %}
+
+<br>
+<h4> Nom de la compagnie : {{cmps.nom}} </h4>
+
+<br>
+
+<h4>Origine : {{cmps.origine}} </h4>
+<br>
+<h4>Chiffre d'affaire : {{cmps.chiffredaffair}}</h4>
+<br>
+
+
+<h4>Description : {{cmps.description}}</h4>
+
+
+<br>
+
+<h4>Date de Fondation : {{cmps.datecreation}}</h4>
+<br>
+<img src="{{cmps.logo}}">
+
+<hr>
+
+{% endfor %}
+</div>
+{% endblock %}

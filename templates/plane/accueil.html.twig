@@ -1,0 +1,58 @@
+{% extends 'layout.html.twig' %}
+
+    {% block body %}
+    <section id="home">
+           <a  href="{{path('voirall')}}" > <button  class="H1">Voir les destinations</button> </a>
+            
+            <div class="project">
+                
+                <div class="block">
+                        <img class="" src="images/agence-voyage.jpg">
+                </div>
+            </div>
+   
+    </section>
+        <section id="commentaires" class="container">
+            
+            {% if app.user %}
+        {{ form_start(commentForm) }}
+        {{form_row(commentForm.auther, {'label':'Nom ','attr':{'placeholder': "Votre nom"}})}} 
+        {{form_row(commentForm.content, {'label':'Commentaire','attr':{'placeholder': "Votre Commentaire"}})}}        
+
+        <button type="submit" class="btn btn-success">Commenter !</button>
+        {{ form_end(commentForm) }}
+            {% else %}
+            <h2>Vous ne pouvez pas commenter si vous n'ètes pas connecté !</h2>
+            <a href="{{path('login')}}" class="btn btn-primary">Connexion</a>
+            {% endif %}
+
+        </section>
+        <div class="container"><h1>Voir les {{ comments | length }}  posts :</h1></div>
+{% for comment in comments %}
+        <div class="container">
+        
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-white post panel-shadow">
+                <div class="post-heading">
+                    <div class="pull-left meta">
+                        <div class="title h5">
+                        
+                            <b>{{comment.auther}}</b>
+                            à ajouter un commentaire le :
+                        </div>
+                        <h6 class="text-muted time">{{comment.createdAt | date ('le d/m/Y à H:i')}}</h6>
+                    </div>
+                </div> 
+                <div class="post-description"> 
+                    <p>{{comment.content}}</p>
+                    
+                </div>
+               
+            </div>
+        </div>
+        </div>
+</div>
+ {% endfor %}
+
+    {% endblock %}

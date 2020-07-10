@@ -1,0 +1,25 @@
+  {% extends 'layout.html.twig'%}
+{% block body %} 
+<div class="container">
+<table border="2">
+<tr>
+<th>id-avion</th>
+<th>Tronsporteur</th>
+<th>Destination</th>
+<th>Vitesse</th>
+<th>Image</th>
+
+
+</tr>
+<tr>    
+<td><h1>{{avion.id}}</h1></td>
+<td><h1>{{avion.transporteur}}</h1></td>
+<td><h1>{{avion.destination}}</h1></td>
+<td><h1>{{avion.vitesse}}</h1></td>
+
+
+
+<td><img src="{{asset(avion.image)}}"></td>
+</tr>
+</div>
+{% endblock %}

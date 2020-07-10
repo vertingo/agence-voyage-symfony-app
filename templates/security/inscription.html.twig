@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig'%}
+{% block body %}
+<div class="container">
+<h1>Inscription</h1>
+{{ form_start(form)}}
+{{form_row(form.nom,{'label':'Nom ','attr':{'placeholder':'Nom'}})}}
+{{form_row(form.prenom,{'label':'Prenom ','attr':{'placeholder':'Prenom'}})}}
+{{form_row(form.tel,{'label':'Num Tel','attr':{'placeholder':'Num Tel'}})}}
+{{form_row(form.email,{'label':'Email ','attr':{'placeholder':'Email'}})}}
+{{form_row(form.password,{'label':'Mot de passe ','attr':{'placeholder':'Mot de passe'}})}}
+{{form_row(form.confirm_password,{'label':'Confirmer Mot de passe ','attr':{'placeholder':'Confirmer Mot de passe'}})}}
+<button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
+      <button class="btn btn-lg btn-primary btn-block" type="reset">Annuler</button>
+{{ form_end(form)}}
+</div>
+{% endblock %}

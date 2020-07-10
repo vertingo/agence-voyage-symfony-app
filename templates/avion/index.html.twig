@@ -1,0 +1,44 @@
+{% extends 'adminlayout.html.twig' %}
+
+
+{% block body %}
+    <h1>Avion index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Transporteur</th>
+                <th>Destination</th>
+                <th>Vitesse</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for avion in avions %}
+            <tr>
+                <td>{{ avion.id }}</td>
+                <td>{{ avion.nom }}</td>
+                <td>{{ avion.type }}</td>
+                <td>{{ avion.Transporteur }}</td>
+                <td>{{ avion.Destination }}</td>
+                <td>{{ avion.vitesse }}</td>
+                <td>{{ avion.image }}</td>
+                <td>
+                    <a href="{{ path('avion_show', {'id': avion.id}) }}">show</a>
+                    <a href="{{ path('avion_edit', {'id': avion.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('avion_new') }}">Create new</a>
+{% endblock %}

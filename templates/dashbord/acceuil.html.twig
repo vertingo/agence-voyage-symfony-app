@@ -1,0 +1,76 @@
+{% extends 'layout.html.twig'%}
+
+{% block body %}
+<br>
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"><h4>Heurs Départ</h4></th>
+      <th scope="col"><h4>Heurs Arrivé</h4></th>
+      <th scope="col"><h4>Campagnie</h4></th>
+      <th scope="col"><h4>Aéroport de départ</h4></th>
+      <th scope="col"><h4>Aéroport d'arriver</h4></th>
+      <th scope="col"><h4>Direction</h4></th>
+      <th scope="col"><h4>Etat</h4></th>
+      <th scope="col"><h4>Reserver pour vole</h4></th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+     {% for voles in vole %}
+
+<tr>
+<td>
+<h4><a href="{{path('detailsAvion',{'id':voles.avion_id})}}">{{voles.id}}</a> </h4></td>
+<td>
+<h4>{{voles.heurdepart | date('H:i:s')}} </h4></td>
+<td>
+<h4>{{voles.heurearrive | date('H:i:s')}} </h4></td>
+
+
+<td>
+<h4><a href="{{path('showcompagnie',{'id':voles.compagnie_id})}}">{{voles.compagnie_id}}</a></h4></td>
+
+<td>
+<h4>{{voles.aeroport_depart}}</h4>
+</td>
+
+<td>
+<h4>{{voles.aeroport_arrive}}</h4>
+</td>
+
+<td>
+{% if voles.aeroport_depart != 'carthage' %}
+<img height="50" width="50" src="arrival.png">
+<h6>Entrante</h6>
+{% else %}
+<img height="50" width="50" src="departure.png">
+<h6>Partente</h6>
+{% endif %}
+</td>
+
+<td>
+{% if  (date|date('Y-m-d H:i:s')) < (voles.heurearrive | date('Y-m-d H:i:s')) and (date|date('Y-m-d H:i:s')) > (voles.heurdepart | date('Y-m-d H:i:s')) %}
+<img height="50" width="50" src="envole.png">
+<h6>envole</h6>
+</td>
+{% else %}
+<img height="50" width="50" src="atterie.png">
+<h6>atterie</h6>
+</td>
+{% endif %}
+{% if app.user %}
+<td>
+<a href=""><button type="submit" class="btn btn-dark"> Reserver</button></a>
+</td>
+{% else %}
+<td>
+<h6>Connecter vous pour reserver</h6>
+</td>
+{% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+
+{% endblock %}

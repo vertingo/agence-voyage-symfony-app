@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig'%}
+
+{% block body %}
+<br>
+
+
+
+
+
+<h4> Nom de la compagnie : {{compagnie.nom}} </h4>
+
+<br>
+
+<h4>Origine : {{compagnie.origine}} </h4>
+<br>
+<h4>Chiffre d'affaire : {{compagnie.chiffredaffair}}</h4>
+<br>
+
+
+<h4>Description : {{compagnie.description}}</h4>
+
+
+<br>
+
+<h4>Date de Fondation : {{compagnie.datecreation}}</h4>
+<br>
+<img src="{{compagnie.logo}}">
+
+<hr>
+
+{% endblock %}
